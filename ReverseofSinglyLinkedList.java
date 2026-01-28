@@ -1,3 +1,5 @@
+import org.w3c.dom.Node;
+
 public class ReverseofSinglyLinkedList {
 Node head;
 private int size;
@@ -97,7 +99,7 @@ return size;
 
 // Method to reverse a LinkedList.
 public void reverseIterate() {
-// Base case
+
 if (head == null || head.next == null) {
 return;
 }
@@ -109,12 +111,70 @@ while (currNode != null) {
 Node nextNode = currNode.next;
 currNode.next = prevNode;
 
-// Update the values of nodes.
+
 prevNode = currNode;
 currNode = nextNode;
 }
 head.next = null;
 head = prevNode;
+Boolean palindrome(){
+    Node slow=head,fast =head;
+    while(fast!=null && fast.next!=null){
+        slow=slow.next;
+        fast=fast.next.next;
+}
+Node secondHalf=reverseIterate(slow.next);
+Node firstHalf=head;
+Node secondcopy=secondHalf;
+Boolean result=true;
+while(secondHalf!=null){
+    if(firstHalf.data!=secondHalf.data){
+        result=false;
+        break;
+    }
+    firstHalf=firstHalf.next;
+    secondHalf=secondHalf.next;
+
+}
+}
+public void NthPositionfromEnd(int n){
+    Node fast=head;
+    Node slow=head;
+    
+    for(int i=0;i<n;i++){
+        if(fast==null) return;
+        fast=fast.next;
+    }
+    while(fast!=null){
+        slow=slow.next;
+        fast=fast.next;
+    }
+    return slow;
+}
+
+public static Node getIntersectionNode(Node headA, Node headB) {
+
+        if (headA == null || headB == null) {
+            return null;
+        }
+
+        Node p1 = headA;
+        Node p2 = headB;
+
+        // since lengths are same
+        while (p1 != null && p2 != null) {
+
+            if (p1 == p2) {   // reference comparison
+                return p1;
+            }
+
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+
+        return null; // no intersection
+    }
+
 }
 
 public static void main(String args[]) {
@@ -131,7 +191,7 @@ list.reverseIterate();
 list.printList();
 }
 }
- public class SinglyLinkedList {
+ //public class SinglyLinkedList {
 // Node head;
 // private int size;
 
