@@ -1,15 +1,16 @@
 public class StackArray {
-    int [ ] stack;
+    char [ ] stack;
     int top;
     int size;
     public StackArray ( int size) {
         this.size = size;
-        stack = new int [size];
+        stack = new char [size];
         top = -1;
     }
-    public void push ( int data) {
+    public void push ( char data) {
         if ( top == size - 1) {
             System.out.println("Stack Overflow");
+                        
             return;
         }
         stack [++top] = data;
@@ -36,16 +37,21 @@ public class StackArray {
 
     public static void main ( String [ ] args) {
         StackArray s = new StackArray (5);
-        s.push(10);
-        s.push(20);
-        s.push(30);
-        s.push(40);
-        s.push(50);
-        s.printStack();
-        System.out.println("Top element is: " + s.peek());
-        System.out.println("Popped element is: " + s.pop());
+        String str = "HELLO";
+        for(int i = 0; i < 5; i++) {
+            s.push(str.charAt(i));
+        }
+
+        // s.push(10);
+        // s.push(20);
+        // s.push(30);
+        // s.push(40);
+        // s.push(50);
+        // s.printStack();
+        // System.out.println("Top element is: " + s.peek());
+        // System.out.println("Popped element is: " + s.pop());
         s.printStack(); 
-        
+
         
     }
 }
