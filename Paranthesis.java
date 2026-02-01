@@ -1,4 +1,4 @@
-import java.util.Stack;
+import java.util.*;
 public class Paranthesis {
 
         public boolean isValid(String s) {
@@ -20,5 +20,15 @@ public class Paranthesis {
             }
             return stack.isEmpty();
         }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the string of paranthesis:");
+        String s = sc.nextLine();
+        if(isValid(s)){
+            System.out.println("The paranthesis are valid");
+        } else {
+            System.out.println("The paranthesis are not valid");
+        }
     }
+}
 
