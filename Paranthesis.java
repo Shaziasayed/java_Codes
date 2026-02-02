@@ -18,7 +18,7 @@ public class Paranthesis {
                     }
                 }
             }
-            return stack.isEmpty();
+            return stack.isEmpty();// if stack is empty then paranthesis are valid
         }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
