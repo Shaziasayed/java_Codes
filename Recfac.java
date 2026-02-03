@@ -154,4 +154,15 @@ public class Recfac{
      int result=rf.climb(num);
      System.out.println(result);
     }
+    public int pow(int x,int n){
+        if(n==0){
+            return 1;
+        }
+        int halfpow=pow(x,n/2);
+        int halfpowsquare=halfpow*halfpow;
+        if(n%2!=0){
+            halfpowsquare=x*halfpowsquare;
+        }
+        return halfpowsquare;
+    }
 }
