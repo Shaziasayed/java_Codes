@@ -32,10 +32,10 @@ public class ReverseKgroup {
                 head.next = reverseKGroup(curr, k);
             }
 
-            return prev; //
+            return prev; 
         }
 
-        return head; //
+        return head; 
     }
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
