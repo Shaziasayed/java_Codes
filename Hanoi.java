@@ -10,7 +10,7 @@ public class Hanoi {
     }
     public static void main(String[] args) {
         Hanoi hanoi = new Hanoi();
-        int n = 3; // number of disks
-        hanoi.solveHanoi(n, 'A', 'C', 'B'); // A is source, C is target, B is auxiliary
+        int n = 5; 
+        hanoi.solveHanoi(n, 'A', 'C', 'B'); 
     }
 }
