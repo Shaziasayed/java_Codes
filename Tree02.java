@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Tree02 {
     class Node {
         int data;
@@ -52,39 +54,62 @@ public class Tree02 {
         }
         return Math.max(leftHeight, rightHeight) + 1;
     }
+    public static void MirrorBinaryTree(Node root) {
+        if (root == null) {
+            return;
+        }
+        Node temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+        MirrorBinaryTree(root.left);
+        MirrorBinaryTree(root.right);
+    }
+
     public static void main(String[] args) {
-        Tree02 tree = new Tree02();
-        Node root = tree.new Node(6);
-        root.left = tree.new Node(2);
-        root.right = tree.new Node(8);
-        root.left.left = tree.new Node(0);
-        root.left.right = tree.new Node(4);
-        root.right.left = tree.new Node(7);
-        root.right.right = tree.new Node(9);
+        // Tree02 tree = new Tree02();
+        // Node root = tree.new Node(6);
+        // root.left = tree.new Node(2);
+        // root.right = tree.new Node(8);
+        // root.left.left = tree.new Node(0);
+        // root.left.right = tree.new Node(4);
+        // root.right.left = tree.new Node(7);
+        // root.right.right = tree.new Node(9);
 
-        Node p = root.left; // Node with value 2
-        Node q = root.right; // Node with value 8
+        // Node p = root.left; // Node with value 2
+        // Node q = root.right; // Node with value 8
 
-        Node lca = LowestCommonAncestor(root, p, q);
-        if (lca != null) {
-            System.out.println("Lowest Common Ancestor of " + p.data + " and " + q.data + " is: " + lca.data);
-        } else {
-            System.out.println("Lowest Common Ancestor does not exist.");
+        // Node lca = LowestCommonAncestor(root, p, q);
+        // if (lca != null) {
+        //     System.out.println("Lowest Common Ancestor of " + p.data + " and " + q.data + " is: " + lca.data);
+        // } else {
+        //     System.out.println("Lowest Common Ancestor does not exist.");
+        // }
+        // int targetSum = 10;
+        // boolean hasPath = tree.hasPathSum(root, targetSum);
+        // if (hasPath) {
+        //     System.out.println("There is a root-to-leaf path with the sum " + targetSum);
+        // } else {
+        //     System.out.println("There is no root-to-leaf path with the sum " + targetSum);
+        // }
+        // System.out.println("Rightmost nodes in the tree:");
+        // printRightNodes(root);
+        // boolean balanced = tree.isBalanced(root);
+        // if (balanced) {
+        //     System.out.println("\nThe tree is balanced.");
+        // } else {
+        //     System.out.println("\nThe tree is not balanced.");
+        // }
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of nodes in the tree: ");
+        int n = scanner.nextInt();  
+        Node root = null;
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter value for node " + (i + 1) + ": ");
+            int value = scanner.nextInt();
+            root = insertIntoBST(root, value);
         }
-        int targetSum = 10;
-        boolean hasPath = tree.hasPathSum(root, targetSum);
-        if (hasPath) {
-            System.out.println("There is a root-to-leaf path with the sum " + targetSum);
-        } else {
-            System.out.println("There is no root-to-leaf path with the sum " + targetSum);
-        }
-        System.out.println("Rightmost nodes in the tree:");
-        printRightNodes(root);
-        boolean balanced = tree.isBalanced(root);
-        if (balanced) {
-            System.out.println("\nThe tree is balanced.");
-        } else {
-            System.out.println("\nThe tree is not balanced.");
-        }
+        
+
+
 }
 }

@@ -80,6 +80,26 @@ public class Tree {
         int rightMin = MinElement(root.right);
         return Math.min(root.data, Math.min(leftMin, rightMin));
     }
+    public static Node FlattenBinaryTree(Node root) {
+        if (root == null) {
+            return null;
+        }
+        Node leftFlattened = FlattenBinaryTree(root.left);//
+        Node rightFlattened = FlattenBinaryTree(root.right);
+        root.left = null;
+        if (leftFlattened != null) {
+            root.right = leftFlattened;//
+            Node temp = leftFlattened;
+            while (temp.right != null) {
+                temp = temp.right;
+            }
+            temp.right = rightFlattened;
+        } else {
+            root.right = rightFlattened;
+        }
+        return root;
+    }
+    
     public boolean identicalTrees(Node root1, Node root2) {
         if (root1 == null && root2 == null) {
             return true;
