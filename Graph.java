@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.LinkedList;
 public class Graph {
     public static void main(String[] args) {
         int V = 5; 
@@ -22,9 +23,12 @@ public class Graph {
             }
             System.out.println();
         }
-        boolean[] visited = new boolean[V]
+        boolean[] visited = new boolean[V];
         System.out.println("DFS Traversal:");
         dfs(graph, 0, visited);
+        System.out.println("\nBFS Traversal:");
+        bfs(graph, 0);
+
 
     }
     public static void dfs(ArrayList<ArrayList<Integer>> graph, int start, boolean[] visited) {
@@ -33,6 +37,22 @@ public class Graph {
         for (Integer neighbor : graph.get(start)) {
             if (!visited[neighbor]) {
                 dfs(graph, neighbor, visited);
+            }
+        }
+    }
+    public static void bfs(ArrayList<ArrayList<Integer>> graph, int start) {
+        boolean[] visited = new boolean[graph.size()];
+        Queue<Integer> queue = new LinkedList<>();
+        visited[start] = true;
+        queue.add(start);
+        while (!queue.isEmpty()) {
+            int vertex = queue.poll();
+            System.out.print(vertex + " ");
+            for (Integer neighbor : graph.get(vertex)) {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.add(neighbor);
+                }
             }
         }
     }
