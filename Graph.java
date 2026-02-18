@@ -28,6 +28,17 @@ public class Graph {
         dfs(graph, 0, visited);
         System.out.println("\nBFS Traversal:");
         bfs(graph, 0);
+        boolean[] visitedForCycle = new boolean[V];
+        boolean hasCycle = false;
+        for (int i = 0; i < V; i++) {
+            if (!visitedForCycle[i]) {
+                if (dfsDetectCycle(graph, i, visitedForCycle, -1)) {
+                    hasCycle = true;
+                    break;
+                }
+            }
+        }        System.out.println("\nGraph has cycle: " + hasCycle);
+
 
 
     }
@@ -56,6 +67,20 @@ public class Graph {
             }
         }
     }
+    public static boolean dfsDetectCycle(ArrayList<ArrayList<Integer>> graph, int vertex, boolean[] visited, int parent) {
+        visited[vertex] = true;
+        for (Integer neighbor : graph.get(vertex)) {
+            if (!visited[neighbor]) {
+                if (dfsDetectCycle(graph, neighbor, visited, vertex)) {
+                    return true;
+                }
+            } else if (neighbor != parent) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
       public static void AddEdge(ArrayList<ArrayList<Integer>> graph, int u, int v) {
         graph.get(u).add(v);
         graph.get(v).add(u);
