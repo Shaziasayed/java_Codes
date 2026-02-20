@@ -3,7 +3,6 @@ import java.util.*;
 public class GreedyAlgorithm {
 
     public static void minCoins(int[] coins, int amount) {
-        // Sort coins in descending order
         Arrays.sort(coins);
 
         int count = 0;
