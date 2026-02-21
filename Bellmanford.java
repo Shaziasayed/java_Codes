@@ -48,8 +48,8 @@ public class Bellmanford {
 
         for (int i = 0; i < V - 1; i++) {
 
-            for (int u = 0; u < V; u++) {
-
+            //for (int u = 0; u < V; u++) {
+            for( int u = 0; u < V; u++) {
                 for (Pair edge : graph.get(u)) {
 
                     int v = edge.vertex;
