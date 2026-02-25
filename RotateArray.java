@@ -1,5 +1,5 @@
 import java.util.*;
-public class RotateArray {
+ class RotateArra{
     public void rotate(int[] nums, int k) {
       int n=nums.length;
       k=k%n; 
